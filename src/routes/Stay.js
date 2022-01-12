@@ -1,12 +1,12 @@
 import React from "react";
 import { CustomContainer } from "styles/Container-style";
 
-const Magazine = () => {
+const Stay = () => {
   return (
     <CustomContainer>
-      <h1>Magazine!!</h1>
+      <h1>Stay!</h1>
     </CustomContainer>
   );
 };
 
-export default Magazine;
+export default Stay;
