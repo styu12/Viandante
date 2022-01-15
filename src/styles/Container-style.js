@@ -33,28 +33,37 @@ export const PhotoBackground = styled.div`
 //상단 배너 (광고용 배너)
 export const TopBanner = styled(PhotoBackground)`
   width: 100%;
-  height: 600px;
+  height: 700px;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
+  padding: 0 90px 120px 0;
+  background-attachment: fixed;
 `;
 
-//상단 배너 하단 텍스트박스
-export const TopBannerTextBox = styled.div`
-  width: 400px;
-  height: 150px;
+//상단 배너 하단 텍스트wrapper
+export const TopBannerTextWrapper = styled.div`
+  width: 300px;
+  height: 300px;
   background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TopBannerTextBox = styled.div`
+  width: 282px;
+  height: 282px;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
 
 //상단 배너 텍스트박스 속 텍스트
 export const TopBannerText = styled.p`
-  ${({ theme }) => {
-    const { fonts, paddings, device } = theme;
-
-    return css`
-      padding: ${paddings.lg} ${paddings.base};
-      font-size: ${fonts.size.sm};
-      margin-bottom: 5px;
-    `;
-  }}
+  font-size: 16px;
+  margin-bottom: 12px;
+  line-height: 1.3;
 `;

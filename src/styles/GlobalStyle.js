@@ -7,16 +7,18 @@ const GlobalStyle = createGlobalStyle`
     ${customReset};
 
     ${({ theme }) => {
-        return css`
-            body {
-                font-family: ${theme.fonts.family.base};
-                font-weight: ${theme.fonts.weight.normal};
-                font-size: ${theme.fonts.size.base};
-                ${theme.device.tablet} {
-                    font-size: 11px;
-                }
-            }
-        `;
+      return css`
+        body {
+          font-family: "GmarketSansMedium";
+          font-family: "GmarketSansMedium";
+          font-weight: ${theme.fonts.weight.normal};
+          font-size: ${theme.fonts.size.base};
+          ${theme.device.tablet} {
+            font-size: 11px;
+          }
+          line-height: 1.3;
+        }
+      `;
     }}
 `;
 
