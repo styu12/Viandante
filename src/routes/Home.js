@@ -35,6 +35,20 @@ const SectionMiniTitle = styled.span`
   font-weight: 300;
 `;
 
+// 섹션 밑 더보기 버튼
+const SectionLink = styled(Link)`
+  font-size: 16px;
+  display: block;
+  margin: 40px auto;
+  width: 130px;
+  text-decoration: none;
+  color: gray;
+  transition: all 0.4s;
+  &:hover {
+    color: black;
+  }
+`;
+
 // 가로 flex 컨테이너
 const FlexRowContainer = styled.div`
   display: flex;
@@ -354,6 +368,7 @@ const Home = () => {
             );
           })}
         </FlexRowContainer>
+        <SectionLink to="/magazine"> &gt; 매거진 더보기</SectionLink>
       </Section>
 
       <EventSection>
@@ -421,6 +436,10 @@ const Home = () => {
             <br />
           </div>
         </EventContainer>
+        <a href="http://www.naver.com" target="_blank" rel="noreferrer">
+          {" "}
+          &gt; 인스타 참여하기
+        </a>
       </EventSection>
 
       <Section>
@@ -449,6 +468,7 @@ const Home = () => {
             );
           })}
         </ReviewContainer>
+        <SectionLink to="/review"> &gt; 리뷰 더보기</SectionLink>
       </Section>
 
       <Banner bg={BannerPhotos.spaceBannerUrl}>
@@ -486,6 +506,7 @@ const Home = () => {
             );
           })}
         </FlexRowContainer>
+        <SectionLink to="/magazine"> &gt; 매거진 더보기</SectionLink>
       </Section>
     </CustomContainer>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import styledComponents from "styles/Header-style";
 
 const { Container, CustomNavigator, CustomNavigatorLi, CustomNavigatorLink } =

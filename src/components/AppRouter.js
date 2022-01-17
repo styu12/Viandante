@@ -10,6 +10,7 @@ import Event from "routes/Event";
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "styles/GlobalStyle";
 import { theme } from "styles/theme";
+import Footer from "./Footer";
 
 //앱 전체 router
 const AppRouter = () => {
@@ -25,6 +26,7 @@ const AppRouter = () => {
           <Route exact path="/magazine" element={<Magazine />}></Route>
           <Route exact path="/event" element={<Event />}></Route>
         </Routes>
+        <Footer />
       </Router>
     </ThemeProvider>
   );
