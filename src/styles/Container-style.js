@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 //모든 페이지 적용되는 가장 상위 컨테이너
@@ -30,40 +31,79 @@ export const PhotoBackground = styled.div`
   background-size: cover;
 `;
 
-//상단 배너 (광고용 배너)
-export const TopBanner = styled(PhotoBackground)`
-  width: 100%;
-  height: 700px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  padding: 0 90px 120px 0;
-  background-attachment: fixed;
-`;
-
-//상단 배너 하단 텍스트wrapper
-export const TopBannerTextWrapper = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-export const TopBannerTextBox = styled.div`
-  width: 282px;
-  height: 282px;
-  border: 1px solid gray;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-//상단 배너 텍스트박스 속 텍스트
-export const TopBannerText = styled.p`
-  font-size: 16px;
-  margin-bottom: 12px;
+// 이미지 밑의 제목
+export const ContentTitle = styled.p`
+  font-size: 20px;
+  margin-bottom: 10px;
   line-height: 1.3;
+  text-align: ${(props) => (props.isCenter ? "center" : "left")};
+`;
+
+// 이미지 밑 진한 제목
+export const ContentBoldTitle = styled(ContentTitle)`
+  font-weight: 700;
+`;
+
+export const ContentText = styled.p`
+  font-family: "GmarketSansLight";
+  font-size: 15px;
+  line-height: 1.5;
+`;
+
+// 각 섹션 컨테이너
+export const Section = styled.div`
+  width: 100%;
+  padding: 20px 10%;
+  margin: 40px 0;
+`;
+
+// 섹션 속 제목
+export const SectionTitle = styled.p`
+  font-size: 28px;
+  text-align: ${(props) => (props.isCenter ? "center" : "left")};
+  margin: 25px 0;
+  ${({ theme }) => {
+    const { device, fonts } = theme;
+  }}
+`;
+
+// 섹션 제목 옆 작은 글씨
+export const SectionMiniTitle = styled.span`
+  font-size: 13px;
+  margin-left: 7px;
+  font-weight: 300;
+`;
+
+// 섹션 밑 더보기 버튼
+export const SectionLink = styled(Link)`
+  font-size: 16px;
+  display: block;
+  margin: 40px auto;
+  width: 130px;
+  text-decoration: none;
+  color: gray;
+  transition: all 0.4s;
+  &:hover {
+    color: black;
+  }
+`;
+
+// 가로 flex 컨테이너
+export const FlexRowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  > div {
+    width: 100%;
+  }
+  > div:not(:last-child) {
+    margin-right: 35px;
+  }
+`;
+
+// 가장 기본 이미지상자 ... 정사각형
+export const BasicPhotoBox = styled(PhotoBackground)`
+  width: 100%;
+  padding-bottom: 100%;
+  margin-bottom: 15px;
 `;
