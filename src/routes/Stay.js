@@ -58,8 +58,8 @@ const Stay = () => {
   }, []);
   console.log(stays);
 
-  const toStayDetail = () => {
-    navigate("/stay/3242389");
+  const toStayDetail = (id) => {
+    navigate(`/stay/detail/${id}`);
   };
 
   return (
@@ -68,7 +68,7 @@ const Stay = () => {
         <StayPoster
           key={s.id}
           bg={s.thumbnailUrl}
-          onClick={() => toStayDetail()}
+          onClick={() => toStayDetail(s.id)}
         >
           <StayPosterLink>
             {s.name}

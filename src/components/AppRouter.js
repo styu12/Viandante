@@ -11,6 +11,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from "styles/GlobalStyle";
 import { theme } from "styles/theme";
 import Footer from "./Footer";
+import StayDetail from "routes/StayDetail";
 
 //앱 전체 router
 const AppRouter = () => {
@@ -22,6 +23,7 @@ const AppRouter = () => {
         <Routes>
           <Route exact path="/" element={<Home />}></Route>
           <Route exact path="/stay" element={<Stay />}></Route>
+          <Route exact path="/stay/detail/:id" element={<StayDetail />}></Route>
           <Route exact path="/review" element={<Review />}></Route>
           <Route exact path="/magazine" element={<Magazine />}></Route>
           <Route exact path="/event" element={<Event />}></Route>

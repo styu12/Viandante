@@ -22,7 +22,7 @@ const ToggleBtn = styled.button`
   margin: 0 15px 20px 0;
   outline: none;
   background-color: rgba(0, 0, 0, 0);
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;
   color: ${(props) => (props.isOn ? "black" : "#b2bec3")};
@@ -32,8 +32,8 @@ const ToggleBtn = styled.button`
 const MagazineWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 100px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
 `;
 
 const Magazine = () => {

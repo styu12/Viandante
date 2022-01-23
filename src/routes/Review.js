@@ -22,7 +22,7 @@ const ToggleBtn = styled.button`
   margin: 0 15px 20px 0;
   outline: none;
   background-color: rgba(0, 0, 0, 0);
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
   text-align: center;
   color: ${(props) => (props.isOn ? "black" : "#b2bec3")};
@@ -32,7 +32,7 @@ const ToggleBtn = styled.button`
 const ReviewWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
 `;
 
@@ -54,10 +54,12 @@ const Review = () => {
     //review data call
     await dbService.collection("Reviews").onSnapshot((snapshot) => {
       console.log(snapshot.docs);
-      const reviewArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
+      const reviewArray = snapshot.docs.map((doc) => {
+        return {
+          id: doc.id,
+          ...doc.data(),
+        };
+      });
       setReviews(reviewArray);
     });
   };
@@ -76,6 +78,9 @@ const Review = () => {
 
       <Container>
         <ToggleWrapper>
+          <ToggleBtn isOn={type === ""} onClick={() => setType("")}>
+            전체보기
+          </ToggleBtn>
           <ToggleBtn
             isOn={type === "chuncheon"}
             onClick={() => setType("chuncheon")}
@@ -89,7 +94,10 @@ const Review = () => {
 
         <ReviewWrapper>
           {reviews.map((r) => {
-            return <PageReview key={r.id} r={r} />;
+            if (r.stay === type || type === "") {
+              return <PageReview key={r.id} r={r} />;
+            }
+            return null;
           })}
         </ReviewWrapper>
       </Container>
