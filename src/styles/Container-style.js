@@ -62,9 +62,6 @@ export const SectionTitle = styled.p`
   font-size: 28px;
   text-align: ${(props) => (props.isCenter ? "center" : "left")};
   margin: 25px 0;
-  ${({ theme }) => {
-    const { device, fonts } = theme;
-  }}
 `;
 
 // 섹션 제목 옆 작은 글씨

@@ -66,7 +66,7 @@ const HomeReview = ({ reviews, stays }) => {
         {reviews.map((r) => {
           // r.stay_id를 state에 있는 stay의 id와 비교해서 일치하면 stay의 name을 가져옴!
           let r_stay;
-          stays.map((s) => {
+          stays.forEach((s) => {
             if (s.id === r.stay_id) {
               r_stay = s.name;
             }
