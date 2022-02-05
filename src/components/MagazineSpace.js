@@ -9,17 +9,9 @@ const BasicPhotoBox = styled(PhotoBackground)`
   margin-bottom: 15px;
 `;
 
-// 이미지 밑의 제목
-const ContentTitle = styled.p`
-  font-size: 20px;
-  margin-bottom: 10px;
-  line-height: 1.3;
-  text-align: ${(props) => (props.isCenter ? "center" : "left")};
-`;
-
 //매거진 관련 components
 const MagazineBox = styled.div`
-  padding: 30px;
+  padding: 15px;
   box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;
   transition: transform 0.5s;
@@ -30,35 +22,45 @@ const MagazineBox = styled.div`
 `;
 
 const MagazineTitleWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 3fr 1fr;
   border-bottom: 1px solid gray;
   margin-bottom: 15px;
+  position: relative;
 `;
 
-const MagazineTitle = styled(ContentTitle)`
-  grid-row: 1 / 3;
+const MagazineTitle = styled.h4`
   font-size: 17px;
+  text-align: center;
+  margin: 10px 0;
+`;
+
+const MagazineSubTitle = styled.p`
+  font-size: 11px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-family: "GmarketSansLight";
 `;
 
 const MagazineBarcode = styled.img`
-  width: 80%;
+  position: absolute;
+  width: 30px;
+  left: 10px;
+  bottom: 15px;
   display: block;
-  margin: auto;
   object-fit: contain;
 `;
 
 const MagazineMonth = styled.span`
   font-size: 11px;
   font-weight: 300;
-  text-align: center;
-  margin-top: 3px;
   font-family: "GmarketSansLight";
   font-size: 9px;
+  position: absolute;
+  right: 10px;
+  bottom: 15px;
 `;
 
 const MagazinePhotoBox = styled(BasicPhotoBox)`
-  padding-bottom: 120%;
+  padding-bottom: 70%;
   margin-bottom: 0;
   cursor: pointer;
 `;
@@ -72,7 +74,7 @@ const MagazineCreatedAt = styled.p`
   }
 `;
 
-const MagazineDog = ({ m }) => {
+const MagazineSpace = ({ m }) => {
   return (
     <>
       <MagazineBox
@@ -81,11 +83,8 @@ const MagazineDog = ({ m }) => {
         }}
       >
         <MagazineTitleWrapper>
-          <MagazineTitle isCenter={false}>
-            {m.title.split("\\n")[0]}
-            <br />
-            {m.title.split("\\n")[1]}
-          </MagazineTitle>
+          <MagazineTitle isCenter={false}>{m.title}</MagazineTitle>
+          <MagazineSubTitle>Viandante Rental Cottage</MagazineSubTitle>
           <MagazineBarcode src={require("../assets/main/barcode.png")} />
           <MagazineMonth>{m.month}</MagazineMonth>
         </MagazineTitleWrapper>
@@ -102,4 +101,4 @@ const MagazineDog = ({ m }) => {
   );
 };
 
-export default MagazineDog;
+export default MagazineSpace;

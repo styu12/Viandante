@@ -4,6 +4,7 @@ import styled from "styled-components";
 import MagazineDog from "components/MagazineDog";
 import { dbService } from "fbase";
 import PageTopBanner from "components/Page/PageTopBanner";
+import MagazineSpace from "components/MagazineSpace";
 
 const Container = styled.div`
   width: 100%;
@@ -32,24 +33,52 @@ const ToggleBtn = styled.button`
 const MagazineWrapper = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: ${(props) =>
+    props.isDog ? "repeat(3,1fr)" : "repeat(2,1fr)"};
   grid-gap: 50px;
 `;
 
 const Magazine = () => {
-  const [magazines, setMagazines] = useState([]);
   const [type, setType] = useState("dog");
   const [BannerPhotos, setBannerPhotos] = useState({});
 
-  const getDog = async () => {
-    // magazines data call
-    await dbService.collection("Magazines").onSnapshot((snapshot) => {
-      const magazineArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMagazines(magazineArray);
-    });
+  const [dogMagazines, setDogMagazines] = useState([]);
+  const [spaceMagazines, setSpaceMagazines] = useState([]);
+
+  const getMagazine = async () => {
+    // dogMagazines data call
+    const dogMagazinesArray = [];
+    await dbService
+      .collection("Magazines")
+      .where("type", "==", "Dog")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          dogMagazinesArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+      });
+    setDogMagazines(dogMagazinesArray);
+
+    // spaceMagazines data call
+    const spaceMagazinesArray = [];
+    await dbService
+      .collection("Magazines")
+      .where("type", "==", "Space")
+      .orderBy("createdAt", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          spaceMagazinesArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+      });
+    setSpaceMagazines(spaceMagazinesArray);
 
     // main banner data call
     await dbService.collection("MainBanner").onSnapshot((snapshot) => {
@@ -62,7 +91,7 @@ const Magazine = () => {
   };
 
   useEffect(() => {
-    getDog();
+    getMagazine();
   }, []);
 
   return (
@@ -83,14 +112,18 @@ const Magazine = () => {
           </ToggleBtn>
         </ToggleWrapper>
 
-        <MagazineWrapper>
-          {magazines.map((m) => {
-            return (
-              <div key={m.id}>
-                <MagazineDog m={m} />
-              </div>
-            );
-          })}
+        <MagazineWrapper isDog={type === "dog"}>
+          {type === "dog"
+            ? dogMagazines.map((m) => (
+                <div key={m.id}>
+                  <MagazineDog m={m} />
+                </div>
+              ))
+            : spaceMagazines.map((m) => (
+                <div key={m.id}>
+                  <MagazineSpace m={m} />
+                </div>
+              ))}
         </MagazineWrapper>
       </Container>
     </CustomContainer>

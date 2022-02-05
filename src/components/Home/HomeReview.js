@@ -1,11 +1,7 @@
 import Popup from "components/Popup";
 import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  ContentTitle,
-  FlexRowContainer,
-  PhotoBackground,
-} from "styles/Container-style";
+import { ContentTitle, PhotoBackground } from "styles/Container-style";
 
 //리뷰 관련 components
 

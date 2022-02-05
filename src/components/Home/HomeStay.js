@@ -34,7 +34,7 @@ const HomeStay = ({ stays }) => {
               <BasicPhotoBox bg={s.thumbnailUrl}></BasicPhotoBox>
               <ContentTitle isCenter={true}>{s.description}</ContentTitle>
               <ContentBoldTitle isCenter={true}>{s.name}</ContentBoldTitle>
-              <ContentLink to="/stay">객실보러가기</ContentLink>
+              <ContentLink to="/stay">Read More</ContentLink>
             </div>
           );
         })}

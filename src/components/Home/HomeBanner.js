@@ -20,7 +20,7 @@ const BannerTitle = styled(ContentTitle)`
 export const HomeDogBanner = ({ bg }) => {
   return (
     <Banner bg={bg}>
-      <ContentTitle>VIANDANTE STAY</ContentTitle>
+      <ContentTitle>Viandante &amp; Dog stay</ContentTitle>
       <BannerTitle>반려견과 함께하는 여행</BannerTitle>
     </Banner>
   );
@@ -29,8 +29,8 @@ export const HomeDogBanner = ({ bg }) => {
 export const HomeSpaceBanner = ({ bg }) => {
   return (
     <Banner bg={bg}>
-      <ContentTitle>SPACE</ContentTitle>
-      <BannerTitle>공간을 즐기는 법</BannerTitle>
+      <ContentTitle>Viandante Space</ContentTitle>
+      <BannerTitle>게스트에게 전하고 싶은 공간(空間)의 메세지</BannerTitle>
     </Banner>
   );
 };

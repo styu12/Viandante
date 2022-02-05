@@ -10,7 +10,10 @@ import TopBanner from "components/TopBanner";
 import HomeEvent from "components/Home/HomeEvent";
 import HomeReview from "components/Home/HomeReview";
 import { HomeDogBanner, HomeSpaceBanner } from "components/Home/HomeBanner";
-import { HomeMagazineDog } from "components/Home/HomeMagazine";
+import {
+  HomeMagazineDog,
+  HomeMagazineSpace,
+} from "components/Home/HomeMagazine";
 import HomeStay from "components/Home/HomeStay";
 import styled from "styled-components";
 
@@ -27,7 +30,8 @@ const ReviewContainer = styled.div`
 const Home = () => {
   // 관련 데이터 저장한 state들
   const [stays, setStays] = useState([]);
-  const [magazines, setMagazines] = useState([]);
+  const [dogMagazines, setDogMagazines] = useState([]);
+  const [spaceMagazines, setSpaceMagazines] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [BannerPhotos, setBannerPhotos] = useState({});
 
@@ -42,23 +46,43 @@ const Home = () => {
       setStays(stayArray);
     });
 
-    // magazines data call
-    await dbService.collection("Magazines").onSnapshot((snapshot) => {
-      const magazineArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMagazines(magazineArray);
-    });
+    // dogMagazines data call
+    const dogMagazinesArray = [];
+    await dbService
+      .collection("Magazines")
+      .where("type", "==", "Dog")
+      .where("main", "==", true)
+      .orderBy("createdAt", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          dogMagazinesArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+      });
+    setDogMagazines(dogMagazinesArray);
+
+    // spaceMagazines data call
+    const spaceMagazinesArray = [];
+    await dbService
+      .collection("Magazines")
+      .where("type", "==", "Space")
+      .where("main", "==", true)
+      .orderBy("createdAt", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          spaceMagazinesArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+      });
+    setSpaceMagazines(spaceMagazinesArray);
 
     //review data call
-    // await dbService.collection("Reviews").onSnapshot((snapshot) => {
-    //   const reviewArray = snapshot.docs.map((doc) => ({
-    //     id: doc.id,
-    //     ...doc.data(),
-    //   }));
-    //   setReviews(reviewArray);
-    // });
     const reviewArray = [];
     await dbService
       .collection("Reviews")
@@ -98,7 +122,7 @@ const Home = () => {
 
       <HomeDogBanner bg={BannerPhotos.dogBannerUrl} />
 
-      <HomeMagazineDog magazines={magazines} />
+      <HomeMagazineDog dogMagazines={dogMagazines} />
 
       <HomeEvent />
 
@@ -106,7 +130,7 @@ const Home = () => {
         <SectionTitle isCenter={false}>Review</SectionTitle>
         <ReviewContainer>
           {reviews.map((r) => (
-            <HomeReview r={r} stays={stays} />
+            <HomeReview key={r.id} r={r} stays={stays} />
           ))}
           <SectionLink to="/review"> &gt; 리뷰 더보기</SectionLink>
         </ReviewContainer>
@@ -114,7 +138,7 @@ const Home = () => {
 
       <HomeSpaceBanner bg={BannerPhotos.spaceBannerUrl} />
 
-      <HomeMagazineDog magazines={magazines} />
+      <HomeMagazineSpace spaceMagazines={spaceMagazines} />
     </CustomContainer>
   );
 };
