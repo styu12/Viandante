@@ -30,7 +30,7 @@ const CustomNavigator = styled.ul`
 const CustomNavigatorLi = styled.li`
   ${({ theme }) => {
     return css`
-      width: 23%;
+      width: 20%;
       height: 100%;
       display: flex;
       justify-content: center;
@@ -44,6 +44,8 @@ const CustomNavigatorLink = styled(Link)`
   ${({ theme }) => {
     return css`
       text-decoration: none;
+      text-align: center;
+      font-size: 18px;
       color: ${theme.colors.black};
     `;
   }}

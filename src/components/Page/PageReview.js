@@ -1,4 +1,5 @@
-import React from "react";
+import Popup from "components/Popup";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { BasicPhotoBox } from "styles/Container-style";
 
@@ -31,12 +32,22 @@ const ReviewDate = styled.p`
 `;
 
 const PageReview = ({ r }) => {
+  const [isPop, setIsPop] = useState(false);
+  const openPop = () => {
+    setIsPop(true);
+  };
+
   return (
-    <ReviewContainer>
-      <ReviewPhoto bg={r.thumbnailUrl} />
-      <ReviewTitle>{r.summary.substr(0, 50)}</ReviewTitle>
-      <ReviewDate>{r.date}</ReviewDate>
-    </ReviewContainer>
+    <>
+      <ReviewContainer>
+        <ReviewPhoto bg={r.photos[0]} onClick={openPop} />
+        <ReviewTitle>{r.description.substr(0, 50)}</ReviewTitle>
+        <ReviewDate>
+          {new Date(r.date.seconds * 1000).toLocaleDateString()}
+        </ReviewDate>
+      </ReviewContainer>
+      {isPop ? <Popup setIsPop={setIsPop} r={r} /> : null}
+    </>
   );
 };
 

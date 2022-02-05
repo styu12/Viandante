@@ -37,7 +37,7 @@ const ReviewWrapper = styled.div`
 `;
 
 const Review = () => {
-  const [type, setType] = useState("chuncheon");
+  const [type, setType] = useState("");
   const [BannerPhotos, setBannerPhotos] = useState({});
   const [reviews, setReviews] = useState([]);
 
@@ -52,16 +52,31 @@ const Review = () => {
     });
 
     //review data call
-    await dbService.collection("Reviews").onSnapshot((snapshot) => {
-      console.log(snapshot.docs);
-      const reviewArray = snapshot.docs.map((doc) => {
-        return {
-          id: doc.id,
-          ...doc.data(),
-        };
+    // await dbService.collection("Reviews").onSnapshot((snapshot) => {
+    //   console.log(snapshot.docs);
+    //   const reviewArray = snapshot.docs.map((doc) => {
+    //     return {
+    //       id: doc.id,
+    //       ...doc.data(),
+    //     };
+    //   });
+    //   setReviews(reviewArray);
+    // });
+
+    const reviewArray = [];
+    await dbService
+      .collection("Reviews")
+      .orderBy("date", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          reviewArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
       });
-      setReviews(reviewArray);
-    });
+    setReviews(reviewArray);
   };
 
   useEffect(() => {

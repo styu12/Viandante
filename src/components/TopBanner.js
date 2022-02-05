@@ -38,20 +38,27 @@ const TopBannerText = styled.p`
   margin-bottom: 12px;
   line-height: 1.3;
 `;
+const LogoIcon = styled(PhotoBackground)`
+  width: 50px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 10px auto;
+`;
 
 const TopBanner = ({ bg }) => {
   return (
     <TopBannerContainer bg={bg}>
       <TopBannerTextWrapper>
         <TopBannerTextBox>
-          <TopBannerText>로고</TopBannerText>
+          <LogoIcon bg={require("../assets/logo/logo.png")} />
           <TopBannerText>
             도심을 벗어난 안식처, <br />
             반려견과 함께하는 여행
           </TopBannerText>
           <TopBannerText>
             Viandante <br />
-            원주점 바로가기 →
+            원주점 바로가기 →<br />
           </TopBannerText>
         </TopBannerTextBox>
       </TopBannerTextWrapper>

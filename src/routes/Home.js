@@ -1,12 +1,28 @@
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { CustomContainer } from "styles/Container-style";
+import {
+  CustomContainer,
+  Section,
+  SectionLink,
+  SectionTitle,
+} from "styles/Container-style";
 import TopBanner from "components/TopBanner";
 import HomeEvent from "components/Home/HomeEvent";
 import HomeReview from "components/Home/HomeReview";
 import { HomeDogBanner, HomeSpaceBanner } from "components/Home/HomeBanner";
 import { HomeMagazineDog } from "components/Home/HomeMagazine";
 import HomeStay from "components/Home/HomeStay";
+import styled from "styled-components";
+
+const ReviewContainer = styled.div`
+  margin: auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  > div:not(:last-child) {
+    margin: 0 0 25px 0;
+  }
+`;
 
 const Home = () => {
   // 관련 데이터 저장한 state들
@@ -36,13 +52,28 @@ const Home = () => {
     });
 
     //review data call
-    await dbService.collection("Reviews").onSnapshot((snapshot) => {
-      const reviewArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setReviews(reviewArray);
-    });
+    // await dbService.collection("Reviews").onSnapshot((snapshot) => {
+    //   const reviewArray = snapshot.docs.map((doc) => ({
+    //     id: doc.id,
+    //     ...doc.data(),
+    //   }));
+    //   setReviews(reviewArray);
+    // });
+    const reviewArray = [];
+    await dbService
+      .collection("Reviews")
+      .where("main", "==", true)
+      .orderBy("date", "desc")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          reviewArray.push({
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+      });
+    setReviews(reviewArray);
 
     // main banner data call
     await dbService.collection("MainBanner").onSnapshot((snapshot) => {
@@ -71,7 +102,15 @@ const Home = () => {
 
       <HomeEvent />
 
-      <HomeReview reviews={reviews} stays={stays} />
+      <Section>
+        <SectionTitle isCenter={false}>Review</SectionTitle>
+        <ReviewContainer>
+          {reviews.map((r) => (
+            <HomeReview r={r} stays={stays} />
+          ))}
+          <SectionLink to="/review"> &gt; 리뷰 더보기</SectionLink>
+        </ReviewContainer>
+      </Section>
 
       <HomeSpaceBanner bg={BannerPhotos.spaceBannerUrl} />
 

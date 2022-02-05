@@ -1,23 +1,13 @@
-import React from "react";
+import Popup from "components/Popup";
+import React, { useState } from "react";
 import styled from "styled-components";
 import {
   ContentTitle,
   FlexRowContainer,
   PhotoBackground,
-  Section,
-  SectionLink,
-  SectionTitle,
 } from "styles/Container-style";
 
 //리뷰 관련 components
-const ReviewContainer = styled(FlexRowContainer)`
-  margin: auto;
-  width: 80%;
-  flex-direction: column;
-  > div:not(:last-child) {
-    margin: 0 0 25px 0;
-  }
-`;
 
 const ReviewBox = styled.div`
   display: flex;
@@ -57,36 +47,34 @@ const ReviewText = styled(ContentTitle)`
   margin-top: 15px;
 `;
 
-const HomeReview = ({ reviews, stays }) => {
+const HomeReview = ({ r, stays }) => {
+  const [isPop, setIsPop] = useState(false);
+  const openPop = () => {
+    setIsPop(true);
+  };
+
+  let r_stay;
+  // r.stay_id를 state에 있는 stay의 id와 비교해서 일치하면 stay의 name을 가져옴!
+  stays.forEach((s) => {
+    if (s.title === r.stay) {
+      r_stay = s.name;
+    }
+  });
+
   return (
-    <Section>
-      <SectionTitle isCenter={false}>Review</SectionTitle>
-      <ReviewContainer>
-        {/* review data call and rendering */}
-        {reviews.map((r) => {
-          // r.stay_id를 state에 있는 stay의 id와 비교해서 일치하면 stay의 name을 가져옴!
-          let r_stay;
-          stays.forEach((s) => {
-            if (s.id === r.stay_id) {
-              r_stay = s.name;
-            }
-          });
-          return (
-            <ReviewBox key={r.id}>
-              <ReviewPhoto bg={r.thumbnailUrl} />
-              <ReviewContent>
-                <ReviewType>{r.type}</ReviewType>
-                <ContentTitle>
-                  {r.date} / {r_stay}
-                </ContentTitle>
-                <ReviewText>{r.summary}</ReviewText>
-              </ReviewContent>
-            </ReviewBox>
-          );
-        })}
-      </ReviewContainer>
-      <SectionLink to="/review"> &gt; 리뷰 더보기</SectionLink>
-    </Section>
+    <>
+      <ReviewBox key={r.id} onClick={openPop}>
+        <ReviewPhoto bg={r.photos[0]} />
+        <ReviewContent>
+          <ReviewType>{r.type}</ReviewType>
+          <ContentTitle>
+            {new Date(r.date.seconds * 1000).toLocaleDateString()} / {r_stay}
+          </ContentTitle>
+          <ReviewText>{r.description.substr(0, 100)}...</ReviewText>
+        </ReviewContent>
+      </ReviewBox>
+      {isPop ? <Popup setIsPop={setIsPop} r={r} /> : null}
+    </>
   );
 };
 
