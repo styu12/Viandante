@@ -51,18 +51,6 @@ const Review = () => {
       setBannerPhotos(mainBannerArray[0]);
     });
 
-    //review data call
-    // await dbService.collection("Reviews").onSnapshot((snapshot) => {
-    //   console.log(snapshot.docs);
-    //   const reviewArray = snapshot.docs.map((doc) => {
-    //     return {
-    //       id: doc.id,
-    //       ...doc.data(),
-    //     };
-    //   });
-    //   setReviews(reviewArray);
-    // });
-
     const reviewArray = [];
     await dbService
       .collection("Reviews")

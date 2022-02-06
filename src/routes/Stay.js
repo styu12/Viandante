@@ -1,6 +1,6 @@
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -30,10 +30,17 @@ const StayPosterLink = styled.p`
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
-  text-align: center;
+  > span:nth-child(1) {
+    font-size: 25px;
+  }
+  > span:nth-child(2) {
+    font-size: 15px;
+    display: block;
+    margin: 10px 0;
+  }
   &:hover {
     color: white;
   }
@@ -56,7 +63,6 @@ const Stay = () => {
   useEffect(() => {
     getStays();
   }, []);
-  console.log(stays);
 
   const toStayDetail = (id) => {
     navigate(`/stay/detail/${id}`);
@@ -71,9 +77,8 @@ const Stay = () => {
           onClick={() => toStayDetail(s.id)}
         >
           <StayPosterLink>
-            {s.name}
-            <br></br>
-            {s.description}
+            <span>{s.name}</span>
+            <span>{s.description}</span>
           </StayPosterLink>
         </StayPoster>
       ))}
