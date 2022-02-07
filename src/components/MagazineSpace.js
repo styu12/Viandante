@@ -11,6 +11,7 @@ const BasicPhotoBox = styled(PhotoBackground)`
 
 //매거진 관련 components
 const MagazineBox = styled.div`
+  width: 100%;
   padding: 15px;
   box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 25px;

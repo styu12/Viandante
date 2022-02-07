@@ -59,7 +59,7 @@ export const Section = styled.div`
 
 // 섹션 속 제목
 export const SectionTitle = styled.p`
-  font-size: 28px;
+  font-size: 24px;
   text-align: ${(props) => (props.isCenter ? "center" : "left")};
   margin: 25px 0;
 `;
