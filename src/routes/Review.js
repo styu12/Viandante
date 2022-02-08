@@ -74,7 +74,13 @@ const Review = () => {
   return (
     <CustomContainer>
       <PageTopBanner
-        bg={BannerPhotos.dogBannerUrl}
+        bg={
+          type === ""
+            ? BannerPhotos.reviewAllBannerUrl
+            : type === "chuncheon"
+            ? BannerPhotos.reviewChuncheonBannerUrl
+            : BannerPhotos.reviewWonjuBannerUrl
+        }
         subTitle="Review"
         title="비안단테 리뷰"
       />

@@ -55,6 +55,7 @@ export const Section = styled.div`
   width: 100%;
   padding: 20px 10%;
   margin: 40px 0;
+  position: relative;
 `;
 
 // 섹션 속 제목

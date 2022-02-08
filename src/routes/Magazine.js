@@ -97,7 +97,11 @@ const Magazine = () => {
   return (
     <CustomContainer>
       <PageTopBanner
-        bg={BannerPhotos.dogBannerUrl}
+        bg={
+          type === "dog"
+            ? BannerPhotos.dogBannerUrl
+            : BannerPhotos.spaceBannerUrl
+        }
         subTitle="Magazine"
         title="비안단테 매거진"
       />

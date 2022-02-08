@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { PhotoBackground } from "styles/Container-style";
+import { useNavigate } from "react-router-dom";
 
 //상단 배너 (광고용 배너)
 const TopBannerContainer = styled(PhotoBackground)`
@@ -10,6 +11,7 @@ const TopBannerContainer = styled(PhotoBackground)`
   justify-content: flex-end;
   align-items: flex-end;
   padding: 0 90px 120px 0;
+  cursor: pointer;
 `;
 
 //상단 배너 하단 텍스트wrapper
@@ -37,6 +39,7 @@ const TopBannerText = styled.p`
   font-size: 16px;
   margin-bottom: 12px;
   line-height: 1.3;
+  text-align: center;
 `;
 const LogoIcon = styled(PhotoBackground)`
   width: 50px;
@@ -47,8 +50,13 @@ const LogoIcon = styled(PhotoBackground)`
 `;
 
 const TopBanner = ({ bg }) => {
+  const navigate = useNavigate();
+  const toMainStay = () => {
+    navigate("/stay/detail/8tEEn7gJk6k2QyMl6UDS");
+  };
+
   return (
-    <TopBannerContainer bg={bg}>
+    <TopBannerContainer bg={bg} onClick={() => toMainStay()}>
       <TopBannerTextWrapper>
         <TopBannerTextBox>
           <LogoIcon bg={require("../assets/logo/logo.png")} />

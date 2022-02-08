@@ -12,6 +12,7 @@ const TopBanner = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   padding: 30px 14%;
+  transition: all 0.5s;
 `;
 
 const SubTitle = styled.p`

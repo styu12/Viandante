@@ -4,34 +4,30 @@ import { PhotoBackground } from "styles/Container-style";
 
 const SliderContainer = styled(PhotoBackground)`
   width: 100%;
-  height: 600px;
+  padding-bottom: 50%;
   position: relative;
   transition: background 0.3s;
+  /* background-size: contain;
+  background-repeat: no-repeat; */
 `;
 
 const SliderControlBox = styled.div`
   position: absolute;
-  left: 0;
-  bottom: 0;
+  ${(props) => (props.left ? "left: 5%;" : "right: 5%;")};
+  bottom: 47%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
-  width: 150px;
+  width: 70px;
   height: 60px;
+  border-radius: 50%;
+  cursor: pointer;
 `;
 
 const SliderControlBtn = styled.span`
   font-size: 28px;
   color: white;
-  cursor: pointer;
-`;
-
-const SliderControlBar = styled.span`
-  display: block;
-  margin: 0 15px;
-  font-size: 30px;
-  color: rgba(255, 255, 255, 0.3);
 `;
 
 const Slider = (photosObj) => {
@@ -56,10 +52,16 @@ const Slider = (photosObj) => {
 
   return (
     <SliderContainer bg={photoArray[sliderIndex]}>
-      <SliderControlBox>
+      {/* <SliderControlBox>
         <SliderControlBtn onClick={sliderPrev}>&larr;</SliderControlBtn>
         <SliderControlBar> | </SliderControlBar>
         <SliderControlBtn onClick={sliderNext}>&rarr;</SliderControlBtn>
+      </SliderControlBox> */}
+      <SliderControlBox left={true} onClick={sliderPrev}>
+        <SliderControlBtn>&larr;</SliderControlBtn>
+      </SliderControlBox>
+      <SliderControlBox left={false} onClick={sliderNext}>
+        <SliderControlBtn>&rarr;</SliderControlBtn>
       </SliderControlBox>
     </SliderContainer>
   );

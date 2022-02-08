@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useNavigate } from "react-router";
 import {
   BasicPhotoBox,
-  ContentBoldTitle,
   ContentTitle,
   FlexRowContainer,
   Section,
@@ -22,7 +22,42 @@ const ContentLink = styled(Link)`
   width: 82px;
 `;
 
+const StayPhotoBox = styled(BasicPhotoBox)`
+  cursor: pointer;
+  transition: transform 0.3s;
+  /* box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3); */
+  width: 85%;
+  padding-bottom: 85%;
+  border-radius: 10px;
+  margin: 15px auto 30px auto;
+  &:hover {
+    transform: scale(1.01);
+  }
+`;
+
+const StaySubTitle = styled.p`
+  font-size: 15px;
+  font-family: "GmarketSansLight";
+  margin: 15px 0 8px 0;
+  text-align: center;
+`;
+
+const StayLink = styled(ContentLink)`
+  color: gray;
+  text-transform: uppercase;
+  border-bottom: none;
+  transition: color 0.3s;
+  &:hover {
+    color: black;
+  }
+`;
+
 const HomeStay = ({ stays }) => {
+  const navigate = useNavigate();
+  const toStay = (id) => {
+    navigate(`/stay/detail/${id}`);
+  };
+
   return (
     <Section>
       <SectionTitle isCenter={true}>Viandante Stay</SectionTitle>
@@ -31,10 +66,13 @@ const HomeStay = ({ stays }) => {
         {stays.map((s) => {
           return (
             <div key={s.id}>
-              <BasicPhotoBox bg={s.thumbnailUrl}></BasicPhotoBox>
-              <ContentTitle isCenter={true}>{s.description}</ContentTitle>
-              <ContentBoldTitle isCenter={true}>{s.name}</ContentBoldTitle>
-              <ContentLink to="/stay">Read More</ContentLink>
+              <StayPhotoBox
+                bg={s.thumbnailUrl}
+                onClick={() => toStay(s.id)}
+              ></StayPhotoBox>
+              <StaySubTitle isCenter={true}>{s.description}</StaySubTitle>
+              <ContentTitle isCenter={true}>{s.name}</ContentTitle>
+              <StayLink to={`/stay/detail/${s.id}`}>Read More</StayLink>
             </div>
           );
         })}

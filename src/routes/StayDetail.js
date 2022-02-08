@@ -1,8 +1,9 @@
+import FAQ from "components/FAQ";
 import MagazineSpace from "components/MagazineSpace";
 import Slider from "components/Slider";
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import {
   CustomContainer,
@@ -23,9 +24,16 @@ const RoomInfo = styled.span`
 `;
 
 const RoomPhoto = styled(PhotoBackground)`
-  width: 80%;
+  width: 60%;
   padding-bottom: 40%;
-  margin: auto;
+  margin: 20px;
+  cursor: pointer;
+  box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.5s;
+  border-radius: 10px;
+  &:hover {
+    transform: scale(1.02);
+  }
 `;
 
 const StayIntro = styled.p`
@@ -65,48 +73,13 @@ const MagazineWrapper = styled.div`
   }
 `;
 
-const FAQContainer = styled.div`
-  width: 100%;
-  background-color: #f8f8f8;
-  padding: 50px 8%;
-`;
-
-const FAQTitle = styled.h4`
-  font-size: 22px;
-  margin-bottom: 20px;
-`;
-
-const FAQWrapper = styled.div`
-  display: flex;
-`;
-
-const FAQFilterWrapper = styled.div`
-  flex: 1;
-`;
-
-const FAQFilter = styled.p`
-  font-size: 13px;
-  margin-bottom: 10px;
-  color: gray;
-  cursor: pointer;
-`;
-
-const FAQContentWrapper = styled.div`
-  flex: 3;
-`;
-
-const FAQContent = styled.p`
-  font-size: 15px;
-  line-height: 1.5;
-  width: 70%;
-  text-align: center;
-`;
-
 const StayDetail = () => {
   const { id } = useParams();
   const [stay, setStay] = useState(null);
   const [rooms, setRooms] = useState([]);
   const [magazines, setMagazines] = useState([]);
+  const [faqRef, setFaqRef] = useState(null);
+  const navigate = useNavigate();
 
   const getStay = async () => {
     //review data call
@@ -162,86 +135,84 @@ const StayDetail = () => {
     setMagazines(magazinesArray);
   };
 
+  const getFaqRef = async () => {
+    const FaqRef = await dbService
+      .collection("Stays")
+      .doc(id)
+      .collection("FAQ");
+    setFaqRef(FaqRef);
+  };
+
+  const toRoomDetail = (roomId) => {
+    navigate(roomId);
+  };
+
   useEffect(() => {
     getStay();
-  }, []);
-  useEffect(() => {
     getRooms();
     getMagazines();
-  }, [stay]);
+    getFaqRef();
+  }, []);
 
   return (
     <CustomContainer>
-      {stay ? <Slider photoArray={stay.photosOut} /> : "No Stay"}
+      {stay && (
+        <>
+          <Slider photoArray={stay.photosOut} />
 
-      <Section>
-        <StayTitle>
-          {stay?.description} &nbsp;| &nbsp;{stay?.name}
-        </StayTitle>
-        <SectionTitle isCenter={false}>Rooms</SectionTitle>
-        {rooms.map((r) => (
-          <div key={r.id}>
-            <RoomInfo>
-              {r.name} / 기준 {r.people[0]}명 (최대 {r.people[1]}명) / 반려견
-              기준 {r.dog[0]}마리 (최대 {r.dog[1]}마리)
-            </RoomInfo>
-            <RoomPhoto bg={r.thumbnailUrl} />
-          </div>
-        ))}
-      </Section>
+          <Section>
+            <StayTitle>
+              {stay.description} &nbsp;| &nbsp;{stay.name}
+            </StayTitle>
+            <SectionTitle isCenter={false}>Rooms</SectionTitle>
+            {rooms.map((r) => (
+              <div key={r.id}>
+                <RoomInfo>
+                  {r.name} / 기준 {r.people[0]}명 (최대 {r.people[1]}명) /
+                  반려견 기준 {r.dog[0]}마리 (최대 {r.dog[1]}마리)
+                </RoomInfo>
+                <RoomPhoto
+                  bg={r.thumbnailUrl}
+                  onClick={() => toRoomDetail(r.id)}
+                />
+              </div>
+            ))}
+          </Section>
 
-      <Section>
-        <SectionTitle isCenter={true}>{stay?.description}</SectionTitle>
-        <StayIntro>
-          {stay?.introText.split("\\n").map((e, i) => (
-            <span key={i}>
-              {e}
-              <br></br>
-            </span>
-          ))}
-        </StayIntro>
-      </Section>
+          <Section>
+            <SectionTitle isCenter={true}>{stay.description}</SectionTitle>
+            <StayIntro>
+              {stay.introText.split("\\n").map((e, i) => (
+                <span key={i}>
+                  {e}
+                  <br></br>
+                </span>
+              ))}
+            </StayIntro>
+          </Section>
 
-      <AppealBanner bg={stay?.appealUrl}>
-        <AppealContent>한옥!</AppealContent>
-        <AppealContent>벽난로!</AppealContent>
-        <AppealContent>황토!</AppealContent>
-      </AppealBanner>
+          <AppealBanner bg={stay.appealUrl}>
+            <AppealContent>한옥!</AppealContent>
+            <AppealContent>벽난로!</AppealContent>
+            <AppealContent>황토!</AppealContent>
+          </AppealBanner>
 
-      <Section>
-        <SectionTitle isCenter={false}>
-          Magazine &nbsp;| &nbsp;{stay?.name}
-        </SectionTitle>
-        <MagazineWrapper>
-          {magazines.map((m) => (
-            <div key={m.id}>
-              <MagazineSpace m={m} />
-            </div>
-          ))}
-        </MagazineWrapper>
-      </Section>
+          <Section>
+            <SectionTitle isCenter={false}>
+              Magazine &nbsp;| &nbsp;{stay.name}
+            </SectionTitle>
+            <MagazineWrapper>
+              {magazines.map((m) => (
+                <div key={m.id}>
+                  <MagazineSpace m={m} />
+                </div>
+              ))}
+            </MagazineWrapper>
+          </Section>
 
-      <FAQContainer>
-        <FAQTitle>FAQ</FAQTitle>
-        <FAQWrapper>
-          <FAQFilterWrapper>
-            <FAQFilter>이용요금</FAQFilter>
-            <FAQFilter>반려견 몇마리?</FAQFilter>
-            <FAQFilter>반려견 몇마리?</FAQFilter>
-            <FAQFilter>반려견 몇마리?</FAQFilter>
-            <FAQFilter>반려견 몇마리?</FAQFilter>
-            <FAQFilter>반려견 몇마리?</FAQFilter>
-          </FAQFilterWrapper>
-          <FAQContentWrapper>
-            <FAQContent>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-              veritatis hic reiciendis harum repellendus dolore dolorem
-              recusandae quisquam, asperiores dolor suscipit, quos fugit.
-              Possimus ducimus natus aperiam facere sapiente temporibus.
-            </FAQContent>
-          </FAQContentWrapper>
-        </FAQWrapper>
-      </FAQContainer>
+          <FAQ rooms={rooms} faqRef={faqRef} />
+        </>
+      )}
     </CustomContainer>
   );
 };
