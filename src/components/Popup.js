@@ -27,6 +27,11 @@ const PopContainer = styled.div`
   z-index: 99;
   border-radius: 20px;
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.3);
+  @media (max-width: 768px) {
+    flex-direction: column;
+    padding: 25px 10px;
+    text-align: center;
+  }
 `;
 
 const PopCloseBtn = styled.button`
@@ -40,6 +45,11 @@ const PopCloseBtn = styled.button`
   cursor: pointer;
   top: 30px;
   right: 30px;
+  @media (max-width: 768px) {
+    font-size: 15px;
+    top: 10px;
+    right: 10px;
+  }
 `;
 
 const PopThumb = styled(PhotoBackground)`
@@ -50,6 +60,10 @@ const PopThumb = styled(PhotoBackground)`
   background-repeat: no-repeat;
   transition: background 0.3s ease;
   margin-right: 20px;
+  @media (max-width: 768px) {
+    margin: 0;
+    width: 100%;
+  }
 `;
 
 const PopContent = styled.div`
@@ -57,6 +71,9 @@ const PopContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: 768px) {
+    align-items: center;
+  }
 `;
 
 const ReviewType = styled.p`
@@ -66,17 +83,29 @@ const ReviewType = styled.p`
   width: 65px;
   text-align: center;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+    width: 55px;
+  }
 `;
 
 const PopTitle = styled.h2`
   font-size: 22px;
   margin: 5px 0;
+  @media (max-width: 768px) {
+    font-size: 13px;
+    text-align: center;
+  }
 `;
 
 const PopText = styled.p`
   font-size: 16px;
   line-height: 1.5;
   margin: 15px 0;
+  @media (max-width: 768px) {
+    font-size: 10px;
+    margin: 8px 0;
+  }
 `;
 
 const PopPhotoWrapper = styled.div`
@@ -84,6 +113,9 @@ const PopPhotoWrapper = styled.div`
   height: 200px;
   display: flex;
   align-items: flex-end;
+  @media (max-width: 768px) {
+    height: 80px;
+  }
 `;
 
 const PopPhoto = styled(PhotoBackground)`
@@ -98,6 +130,9 @@ const ReviewDate = styled.p`
   font-size: 13px;
   text-align: center;
   font-family: "MarketSansLight";
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 const Popup = ({ setIsPop, r }) => {

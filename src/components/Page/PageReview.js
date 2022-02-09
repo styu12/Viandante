@@ -24,6 +24,9 @@ const ReviewTitle = styled.h3`
   font-size: 17px;
   text-align: center;
   margin: 10px 0;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const ReviewDesc = styled.p`
@@ -31,6 +34,9 @@ const ReviewDesc = styled.p`
   line-height: 1.5;
   text-align: center;
   margin-bottom: 5px;
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const ReviewDate = styled.p`
@@ -49,6 +55,10 @@ const ReviewType = styled.p`
   position: absolute;
   top: 10px;
   right: 10px;
+  @media (max-width: 768px) {
+    width: 50px;
+    font-size: 9px;
+  }
 `;
 
 const PageReview = ({ r }) => {

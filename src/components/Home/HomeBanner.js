@@ -11,10 +11,17 @@ const Banner = styled(PhotoBackground)`
   flex-direction: column;
   justify-content: flex-end;
   color: white;
+  @media (max-width: 768px) {
+    height: 200px;
+    padding: 0 0 10px 23px;
+  }
 `;
 
 const BannerTitle = styled(ContentTitle)`
   font-size: 28px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const HomeDogBanner = ({ bg }) => {

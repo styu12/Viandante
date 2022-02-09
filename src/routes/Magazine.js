@@ -28,6 +28,10 @@ const ToggleBtn = styled.button`
   text-align: center;
   color: ${(props) => (props.isOn ? "black" : "#b2bec3")};
   border: none;
+  @media (max-width: 768px) {
+    font-size: 14px;
+    width: 50px;
+  }
 `;
 
 const MagazineWrapper = styled.div`
@@ -36,6 +40,10 @@ const MagazineWrapper = styled.div`
   grid-template-columns: ${(props) =>
     props.isDog ? "repeat(3,1fr)" : "repeat(2,1fr)"};
   grid-gap: 50px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
 `;
 
 const Magazine = () => {

@@ -27,6 +27,10 @@ const ToggleBtn = styled.button`
   text-align: center;
   color: ${(props) => (props.isOn ? "black" : "#b2bec3")};
   border: none;
+  @media (max-width: 768px) {
+    font-size: 13px;
+    width: 60px;
+  }
 `;
 
 const ReviewWrapper = styled.div`
@@ -34,6 +38,12 @@ const ReviewWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: auto;
+    grid-gap: 15px;
+  }
 `;
 
 const Review = () => {

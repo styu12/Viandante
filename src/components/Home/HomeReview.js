@@ -15,17 +15,27 @@ const ReviewBox = styled.div`
   &:hover {
     transform: scale(1.03);
   }
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const ReviewPhoto = styled(PhotoBackground)`
   flex: 1;
   padding-bottom: 33%;
   border-radius: 18px 0 0 18px;
+  @media (max-width: 768px) {
+    padding-bottom: 100%;
+    border-radius: 10px 10px 0 0;
+  }
 `;
 
 const ReviewContent = styled.div`
   flex: 2;
   padding: 35px 65px;
+  @media (max-width: 768px) {
+    padding: 10px 18px;
+  }
 `;
 
 const ReviewType = styled.p`
@@ -35,12 +45,20 @@ const ReviewType = styled.p`
   width: 65px;
   text-align: center;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+    width: 50px;
+    padding: 4px;
+  }
 `;
 
 const ReviewText = styled(ContentTitle)`
   font-family: "MarketSansLight";
   line-height: 1.5;
   margin-top: 15px;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 const HomeReview = ({ r, stays }) => {

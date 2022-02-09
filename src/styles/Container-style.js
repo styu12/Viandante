@@ -37,6 +37,9 @@ export const ContentTitle = styled.p`
   margin-bottom: 10px;
   line-height: 1.3;
   text-align: ${(props) => (props.isCenter ? "center" : "left")};
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 // 이미지 밑 진한 제목
@@ -96,6 +99,9 @@ export const FlexRowContainer = styled.div`
   }
   > div:not(:last-child) {
     margin-right: 35px;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `;
 

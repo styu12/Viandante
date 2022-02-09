@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
           font-size: ${theme.fonts.size.base};
           ${theme.device.tablet} {
             font-size: 11px;
+            overflow-x: hidden;
+          }
+          ${theme.device.mobile} {
+            overflow-x: hidden;
           }
           line-height: 1.3;
         }

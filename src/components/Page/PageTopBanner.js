@@ -18,10 +18,16 @@ const TopBanner = styled.div`
 const SubTitle = styled.p`
   font-size: 17px;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const BannerTitle = styled.p`
   font-size: 28px;
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 const PageTopBanner = ({ bg, subTitle, title }) => {

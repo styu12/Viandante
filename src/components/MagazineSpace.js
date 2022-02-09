@@ -20,6 +20,9 @@ const MagazineBox = styled.div`
   &:hover {
     transform: scale(1.05);
   }
+  @media (max-width: 768px) {
+    margin-bottom: 13px;
+  }
 `;
 
 const MagazineTitleWrapper = styled.div`
@@ -72,6 +75,12 @@ const MagazineCreatedAt = styled.p`
   text-align: center;
   > span {
     font-size: 10px;
+  }
+  @media (max-width: 768px) {
+    font-size: 13px;
+    > span {
+      font-size: 9px;
+    }
   }
 `;
 

@@ -12,6 +12,10 @@ const TopBannerContainer = styled(PhotoBackground)`
   align-items: flex-end;
   padding: 0 90px 120px 0;
   cursor: pointer;
+  @media (max-width: 768px) {
+    height: 300px;
+    padding: 0 10px 20px 0;
+  }
 `;
 
 //상단 배너 하단 텍스트wrapper
@@ -22,6 +26,10 @@ const TopBannerTextWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 130px;
+    height: 130px;
+  }
 `;
 
 const TopBannerTextBox = styled.div`
@@ -32,6 +40,10 @@ const TopBannerTextBox = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 //상단 배너 텍스트박스 속 텍스트
@@ -40,6 +52,10 @@ const TopBannerText = styled.p`
   margin-bottom: 12px;
   line-height: 1.3;
   text-align: center;
+  @media (max-width: 768px) {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
 `;
 const LogoIcon = styled(PhotoBackground)`
   width: 50px;
@@ -47,6 +63,10 @@ const LogoIcon = styled(PhotoBackground)`
   background-size: contain;
   background-repeat: no-repeat;
   margin: 10px auto;
+  @media (max-width: 768px) {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 const TopBanner = ({ bg }) => {
