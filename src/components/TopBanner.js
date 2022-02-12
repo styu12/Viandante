@@ -79,7 +79,7 @@ const TopBanner = ({ bg }) => {
     <TopBannerContainer bg={bg} onClick={() => toMainStay()}>
       <TopBannerTextWrapper>
         <TopBannerTextBox>
-          <LogoIcon bg={require("../assets/logo/logo.png")} />
+          <LogoIcon bg="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2Flogo.png?alt=media&token=2df9861a-0e96-4593-9cc2-88920216a941" />
           <TopBannerText>
             도심을 벗어난 안식처, <br />
             반려견과 함께하는 여행

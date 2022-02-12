@@ -9,11 +9,17 @@ import MagazineSpace from "components/MagazineSpace";
 const Container = styled.div`
   width: 100%;
   padding: 40px 14%;
+  @media (max-width: 768px) {
+    padding: 20px 5%;
+  }
 `;
 
 const ToggleWrapper = styled.div`
   width: 100%;
   display: flex;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const ToggleBtn = styled.button`
@@ -30,7 +36,7 @@ const ToggleBtn = styled.button`
   border: none;
   @media (max-width: 768px) {
     font-size: 14px;
-    width: 50px;
+    width: 80px;
   }
 `;
 

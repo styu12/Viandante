@@ -13,6 +13,9 @@ const TopBanner = styled.div`
   justify-content: flex-end;
   padding: 30px 14%;
   transition: all 0.5s;
+  @media (max-width: 768px) {
+    padding: 20px 7%;
+  }
 `;
 
 const SubTitle = styled.p`

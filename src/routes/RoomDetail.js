@@ -10,12 +10,18 @@ const RoomInfo = styled.p`
   font-size: 17px;
   margin: 10px 0;
   font-family: "GmarketSansLight";
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
 `;
 
 const RoomAvailable = styled.p`
   font-size: 13px;
   margin: 15px 0;
   font-family: "GmarketSansLight";
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const RoomBook = styled.a`
@@ -33,6 +39,11 @@ const RoomBook = styled.a`
   &:hover {
     transform: scale(1.03);
   }
+  @media (max-width: 768px) {
+    font-size: 13px;
+    right: 20px;
+    bottom: 70%;
+  }
 `;
 
 const Calendar = styled.iframe`
@@ -42,6 +53,9 @@ const Calendar = styled.iframe`
   display: block;
   border: 2px solid black;
   border-radius: 15px;
+  @media (max-width: 768px) {
+    width: 90%;
+  }
 `;
 
 const RoomDetail = () => {

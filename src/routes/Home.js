@@ -19,11 +19,17 @@ import styled from "styled-components";
 
 const ReviewContainer = styled.div`
   margin: auto;
-  width: 80%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   > div:not(:last-child) {
     margin: 0 0 25px 0;
+  }
+  @media (max-width: 768px) {
+    flex-direction: row;
+    width: 95%;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 `;
 
@@ -124,7 +130,7 @@ const Home = () => {
 
       <HomeMagazineDog dogMagazines={dogMagazines} />
 
-      <HomeEvent />
+      {/* <HomeEvent /> */}
 
       <Section>
         <SectionTitle isCenter={false}>Review</SectionTitle>

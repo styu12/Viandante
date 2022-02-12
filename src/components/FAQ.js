@@ -12,19 +12,34 @@ const FAQContainer = styled.div`
   width: 100%;
   background-color: #f8f8f8;
   padding: 50px 8%;
+  @media (max-width: 768px) {
+    padding: 20px 5%;
+  }
 `;
 
 const FAQTitle = styled.h4`
   font-size: 22px;
   margin-bottom: 20px;
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
 `;
 
 const FAQWrapper = styled.div`
   display: flex;
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
 `;
 
 const FAQFilterWrapper = styled.div`
   flex: 1;
+  @media (max-width: 768px) {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    border-bottom: 2px solid black;
+  }
 `;
 
 const FAQFilter = styled.p`
@@ -32,6 +47,10 @@ const FAQFilter = styled.p`
   margin-bottom: 10px;
   cursor: pointer;
   opacity: ${(props) => (props.active ? "1" : "0.5")};
+  @media (max-width: 768px) {
+    font-size: 12px;
+    margin-right: 30px;
+  }
 `;
 
 const FAQContentWrapper = styled.div`

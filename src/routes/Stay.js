@@ -7,6 +7,11 @@ const Container = styled.div`
   width: 100%;
   height: calc(100vh - 80px);
   display: flex;
+  margin-top: 80px;
+  @media (max-width: 768px) {
+    margin-top: 60px;
+    flex-direction: column;
+  }
 `;
 
 const StayPoster = styled.div`
@@ -23,6 +28,15 @@ const StayPoster = styled.div`
       url(${(props) => props.bg});
     background-position: center center;
     background-size: cover;
+  }
+  @media (max-width: 768px) {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)),
+      url(${(props) => props.bg});
+    background-position: center center;
+    background-size: cover;
+    &:hover {
+      flex: 1;
+    }
   }
 `;
 
@@ -43,6 +57,15 @@ const StayPosterLink = styled.p`
   }
   &:hover {
     color: white;
+  }
+  @media (max-width: 768px) {
+    color: white;
+    > span:nth-child(1) {
+      font-size: 17px;
+    }
+    > span:nth-child(2) {
+      font-size: 12px;
+    }
   }
 `;
 

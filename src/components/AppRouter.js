@@ -13,6 +13,7 @@ import { theme } from "styles/theme";
 import Footer from "./Footer";
 import StayDetail from "routes/StayDetail";
 import RoomDetail from "routes/RoomDetail";
+import SNS from "./SNS";
 
 //앱 전체 router
 const AppRouter = () => {
@@ -35,6 +36,7 @@ const AppRouter = () => {
           <Route exact path="/event" element={<Event />}></Route>
         </Routes>
         <Footer />
+        <SNS />
       </Router>
     </ThemeProvider>
   );

@@ -17,6 +17,7 @@ const ReviewBox = styled.div`
   }
   @media (max-width: 768px) {
     flex-direction: column;
+    width: 48%;
   }
 `;
 
@@ -32,7 +33,7 @@ const ReviewPhoto = styled(PhotoBackground)`
 
 const ReviewContent = styled.div`
   flex: 2;
-  padding: 35px 65px;
+  padding: 25px 45px;
   @media (max-width: 768px) {
     padding: 10px 18px;
   }
@@ -46,9 +47,16 @@ const ReviewType = styled.p`
   text-align: center;
   margin-bottom: 10px;
   @media (max-width: 768px) {
-    font-size: 10px;
+    font-size: 9px;
     width: 50px;
     padding: 4px;
+  }
+`;
+
+const ReviewTitle = styled(ContentTitle)`
+  font-size: 20px;
+  @media (max-width: 768px) {
+    font-size: 11px;
   }
 `;
 
@@ -56,6 +64,7 @@ const ReviewText = styled(ContentTitle)`
   font-family: "MarketSansLight";
   line-height: 1.5;
   margin-top: 15px;
+  font-size: 18px;
   @media (max-width: 768px) {
     font-size: 10px;
   }
@@ -81,10 +90,10 @@ const HomeReview = ({ r, stays }) => {
         <ReviewPhoto bg={r.photos[0]} />
         <ReviewContent>
           <ReviewType>{r.type}</ReviewType>
-          <ContentTitle>
+          <ReviewTitle>
             {new Date(r.date.seconds * 1000).toLocaleDateString()} / {r_stay}
-          </ContentTitle>
-          <ReviewText>{r.description.substr(0, 100)}...</ReviewText>
+          </ReviewTitle>
+          <ReviewText>{r.description.substr(0, 45)}...</ReviewText>
         </ReviewContent>
       </ReviewBox>
       {isPop ? <Popup setIsPop={setIsPop} r={r} /> : null}

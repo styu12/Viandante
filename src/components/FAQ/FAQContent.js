@@ -3,11 +3,17 @@ import styled from "styled-components";
 
 const FAQContent = styled.div`
   width: 70%;
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
 const FAQContentTitle = styled.h4`
   font-size: 19px;
   margin-bottom: 10px;
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 const FAQContentDesc = styled.p`
@@ -20,11 +26,17 @@ const FAQContentDesc = styled.p`
     font-size: 15px; */
     font-family: "GmarketSansMedium";
   }
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const FAQTable = styled.table`
   width: 100%;
   margin: 25px 0;
+  @media (max-width: 768px) {
+    margin: 15px 0;
+  }
 `;
 
 const FAQTableRow = styled.tr`
@@ -37,6 +49,9 @@ const FAQTableItem = styled.td`
   text-align: center;
   vertical-align: middle;
   font-size: 14px;
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 const FAQTableHead = styled(FAQTableItem)`
@@ -45,6 +60,9 @@ const FAQTableHead = styled(FAQTableItem)`
   color: white;
   font-family: "GmarketSansLight";
   border: 1px solid gray;
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
 `;
 
 export const FAQPrice = ({ rooms }) => {
@@ -81,10 +99,10 @@ export const FAQPrice = ({ rooms }) => {
           {rooms.map((r) => (
             <FAQTableRow key={r.id}>
               <FAQTableItem>{r.name}</FAQTableItem>
-              <FAQTableItem>{r.price[0]}</FAQTableItem>
-              <FAQTableItem>{r.price[1]}</FAQTableItem>
-              <FAQTableItem>{r.price[2]}</FAQTableItem>
-              <FAQTableItem>{r.price[3]}</FAQTableItem>
+              <FAQTableItem>{r.price[0]}만원</FAQTableItem>
+              <FAQTableItem>{r.price[1]}만원</FAQTableItem>
+              <FAQTableItem>{r.price[2]}만원</FAQTableItem>
+              <FAQTableItem>{r.price[3]}만원</FAQTableItem>
             </FAQTableRow>
           ))}
         </tbody>

@@ -1,27 +1,17 @@
 import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 //모든 페이지 적용되는 가장 상위 컨테이너
 export const CustomContainer = styled.div`
-  ${({ theme }) => {
-    const { colors, device, fonts, paddings } = theme;
-
-    return css`
-      width: 100%;
-      height: 100%;
-      ${device.tablet} {
-        /* background-color: ${colors.red}; */
-      }
-
-      h1 {
-        font-size: ${fonts.size.xl};
-        padding: ${paddings.xl};
-        ${device.tablet} {
-          font-size: ${fonts.size.base};
-        }
-      }
-    `;
-  }}
+  width: 100%;
+  padding-top: 80px;
+  h1 {
+    font-size: 2.5rem;
+    padding: 3rem;
+  }
+  @media (max-width: 768px) {
+    padding-top: 60px;
+  }
 `;
 
 //배경에 이미지 들어가는 효과
@@ -59,6 +49,9 @@ export const Section = styled.div`
   padding: 20px 10%;
   margin: 40px 0;
   position: relative;
+  @media (max-width: 768px) {
+    padding: 20px 5%;
+  }
 `;
 
 // 섹션 속 제목
@@ -66,6 +59,9 @@ export const SectionTitle = styled.p`
   font-size: 24px;
   text-align: ${(props) => (props.isCenter ? "center" : "left")};
   margin: 25px 0;
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
 `;
 
 // 섹션 제목 옆 작은 글씨
@@ -73,6 +69,9 @@ export const SectionMiniTitle = styled.span`
   font-size: 13px;
   margin-left: 7px;
   font-weight: 300;
+  @media (max-width: 768px) {
+    font-size: 10px;
+  }
 `;
 
 // 섹션 밑 더보기 버튼

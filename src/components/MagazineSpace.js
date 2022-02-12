@@ -95,7 +95,7 @@ const MagazineSpace = ({ m }) => {
         <MagazineTitleWrapper>
           <MagazineTitle isCenter={false}>{m.title}</MagazineTitle>
           <MagazineSubTitle>Viandante Rental Cottage</MagazineSubTitle>
-          <MagazineBarcode src={require("../assets/main/barcode.png")} />
+          <MagazineBarcode src="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2Fbarcode.png?alt=media&token=a761da81-3ca7-426c-af36-8b6b083c3f93" />
           <MagazineMonth>{m.month}</MagazineMonth>
         </MagazineTitleWrapper>
         <MagazinePhotoBox bg={m.thumbnailUrl}></MagazinePhotoBox>

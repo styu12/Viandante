@@ -29,7 +29,7 @@ const PopContainer = styled.div`
   box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.3);
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 25px 10px;
+    padding: 40px 20px 20px 20px;
     text-align: center;
   }
 `;
@@ -43,6 +43,7 @@ const PopCloseBtn = styled.button`
   position: absolute;
   text-align: center;
   cursor: pointer;
+  color: black;
   top: 30px;
   right: 30px;
   @media (max-width: 768px) {
@@ -62,7 +63,7 @@ const PopThumb = styled(PhotoBackground)`
   margin-right: 20px;
   @media (max-width: 768px) {
     margin: 0;
-    width: 100%;
+    max-width: 100%;
   }
 `;
 

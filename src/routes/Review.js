@@ -8,11 +8,17 @@ import PageReview from "components/Page/PageReview";
 const Container = styled.div`
   width: 100%;
   padding: 40px 14%;
+  @media (max-width: 768px) {
+    padding: 20px 5%;
+  }
 `;
 
 const ToggleWrapper = styled.div`
   width: 100%;
   display: flex;
+  @media (max-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 const ToggleBtn = styled.button`
@@ -28,8 +34,8 @@ const ToggleBtn = styled.button`
   color: ${(props) => (props.isOn ? "black" : "#b2bec3")};
   border: none;
   @media (max-width: 768px) {
-    font-size: 13px;
-    width: 60px;
+    font-size: 14px;
+    width: 80px;
   }
 `;
 
@@ -39,10 +45,9 @@ const ReviewWrapper = styled.div`
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    width: 90%;
+    grid-template-columns: 1fr 1fr;
     margin: auto;
-    grid-gap: 15px;
+    grid-gap: 20px;
   }
 `;
 
