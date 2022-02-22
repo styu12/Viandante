@@ -41,6 +41,15 @@ const InstaIcon = styled(BlogIcon)`
   }
 `;
 
+const KakaoIcon = styled(BlogIcon)`
+  width: 60px;
+  height: 60px;
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
+`;
+
 const SNS = () => {
   return (
     <SNSContainer>
@@ -53,6 +62,10 @@ const SNS = () => {
         onClick={() =>
           window.open("https://www.instagram.com/viandante_official/")
         }
+      />
+      <KakaoIcon
+        bg="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2FkakaoIcon.png?alt=media&token=112a0dc5-756b-4fef-952c-2727b46887a8"
+        onClick={() => window.open("http://pf.kakao.com/_xdxhaxab/chat")}
       />
     </SNSContainer>
   );

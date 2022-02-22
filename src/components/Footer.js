@@ -50,13 +50,12 @@ const Footer = () => {
       </FooterLogoLink>
       <ul>
         <li>
-          <FooterText>상호 : 비안단테 &nbsp;&nbsp; 대표자 : 신용봉</FooterText>
+          <FooterText>
+            상호 : 비안단테 &nbsp;&nbsp; 대표자 : 송승빈외 1명
+          </FooterText>
         </li>
         <li>
-          <FooterText>사업자 등록번호 : 111-22-324298</FooterText>
-        </li>
-        <li>
-          <FooterText>강원도 춘천시 서면 금산리 477-1</FooterText>
+          <FooterText>사업자 등록번호 : 575-28-01415</FooterText>
         </li>
       </ul>
     </FooterContainer>
