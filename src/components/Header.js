@@ -237,14 +237,14 @@ const Header = () => {
             MAGAZINE
           </CustomNavigatorLink>
         </CustomNavigatorLi>
-        {/* <CustomNavigatorLi>
+        <CustomNavigatorLi>
           <CustomNavigatorLink
             to="/event"
             active={pathname.includes("event").toString()}
           >
             EVENT
           </CustomNavigatorLink>
-        </CustomNavigatorLi> */}
+        </CustomNavigatorLi>
         <MobileMenuIcon
           bg="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2FhambugMenu.png?alt=media&token=386a8a08-de80-490a-aae5-c59dc027db32"
           onClick={() => showMenu()}

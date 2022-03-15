@@ -6,6 +6,7 @@ import Stay from "routes/Stay";
 import Review from "routes/Review";
 import Magazine from "routes/Magazine";
 import Event from "routes/Event";
+import EventDetail from "routes/EventDetail";
 
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "styles/GlobalStyle";
@@ -33,6 +34,11 @@ const AppRouter = () => {
           ></Route>
           <Route exact path="/review" element={<Review />}></Route>
           <Route exact path="/magazine" element={<Magazine />}></Route>
+          <Route
+            exact
+            path="/event/detail/:id"
+            element={<EventDetail />}
+          ></Route>
           <Route exact path="/event" element={<Event />}></Route>
         </Routes>
         <Footer />
