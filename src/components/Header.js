@@ -283,6 +283,15 @@ const Header = () => {
                 MAGAZINE
               </MobileMenuLink>
             </MobileMenuLi>
+            <MobileMenuLi>
+              <MobileMenuLink
+                to="/event"
+                active={pathname.includes("event").toString()}
+                onClick={() => hideMenu()}
+              >
+                EVENT
+              </MobileMenuLink>
+            </MobileMenuLi>
           </MobileMenuUl>
         </MobileMenuContainer>
         <HeaderSpaceBar> | </HeaderSpaceBar>

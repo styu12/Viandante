@@ -47,7 +47,7 @@ const MagazineWrapper = styled.div`
     props.isDog ? "repeat(3,1fr)" : "repeat(2,1fr)"};
   grid-gap: 50px;
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 20px;
   }
 `;

@@ -16,6 +16,7 @@ import {
 } from "components/Home/HomeMagazine";
 import HomeStay from "components/Home/HomeStay";
 import styled from "styled-components";
+import EventPop from "components/EventPop";
 
 const ReviewContainer = styled.div`
   margin: auto;
@@ -40,6 +41,7 @@ const Home = () => {
   const [spaceMagazines, setSpaceMagazines] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [BannerPhotos, setBannerPhotos] = useState({});
+  const [isPop, setIsPop] = useState(true);
 
   // firestore data 모두 불러오기
   const getData = async () => {
@@ -118,10 +120,18 @@ const Home = () => {
   // 컴포넌트 렌더링 시 이미지 불러와서 state에 담기
   useEffect(() => {
     getData();
+    setIsPop(true);
   }, []);
 
   return (
     <CustomContainer>
+      {isPop ? (
+        <EventPop
+          setIsPop={setIsPop}
+          imgUrl="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Events%2F1%2Fthumb.png?alt=media&token=019b1721-e36d-486f-bf64-28ba2323a385"
+        />
+      ) : null}
+
       <TopBanner bg={BannerPhotos.topBannerUrl} />
 
       <HomeStay stays={stays} />

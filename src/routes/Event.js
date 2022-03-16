@@ -87,13 +87,7 @@ const Event = () => {
   return (
     <CustomContainer>
       <PageTopBanner
-        bg={
-          type === ""
-            ? BannerPhotos.reviewAllBannerUrl
-            : type === "chuncheon"
-            ? BannerPhotos.reviewChuncheonBannerUrl
-            : BannerPhotos.reviewWonjuBannerUrl
-        }
+        bg={BannerPhotos.topBannerUrl}
         subTitle="Event"
         title="비안단테 이벤트"
       />

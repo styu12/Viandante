@@ -22,6 +22,7 @@ const MagazineBox = styled.div`
   }
   @media (max-width: 768px) {
     margin-bottom: 13px;
+    padding: 8px;
   }
 `;
 
@@ -35,6 +36,9 @@ const MagazineTitle = styled.h4`
   font-size: 17px;
   text-align: center;
   margin: 10px 0;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const MagazineSubTitle = styled.p`
@@ -42,6 +46,9 @@ const MagazineSubTitle = styled.p`
   text-align: center;
   margin-bottom: 40px;
   font-family: "GmarketSansLight";
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 const MagazineBarcode = styled.img`
@@ -51,6 +58,9 @@ const MagazineBarcode = styled.img`
   bottom: 15px;
   display: block;
   object-fit: contain;
+  @media (max-width: 768px) {
+    width: 20px;
+  }
 `;
 
 const MagazineMonth = styled.span`
@@ -61,12 +71,18 @@ const MagazineMonth = styled.span`
   position: absolute;
   right: 10px;
   bottom: 15px;
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
 `;
 
 const MagazinePhotoBox = styled(BasicPhotoBox)`
   padding-bottom: 70%;
   margin-bottom: 0;
   cursor: pointer;
+  @media (max-width: 768px) {
+    padding-bottom: 80%;
+  }
 `;
 
 const MagazineCreatedAt = styled.p`
@@ -77,7 +93,7 @@ const MagazineCreatedAt = styled.p`
     font-size: 10px;
   }
   @media (max-width: 768px) {
-    font-size: 13px;
+    font-size: 11px;
     > span {
       font-size: 9px;
     }

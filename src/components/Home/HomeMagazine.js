@@ -1,6 +1,7 @@
 import MagazineDog from "components/MagazineDog";
 import MagazineSpace from "components/MagazineSpace";
 import React from "react";
+import styled from "styled-components";
 import {
   FlexRowContainer,
   Section,
@@ -9,13 +10,21 @@ import {
   SectionTitle,
 } from "styles/Container-style";
 
+const HomeMagazineWrapper = styled(FlexRowContainer)`
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+`;
+
 export const HomeMagazineDog = ({ dogMagazines }) => {
   return (
     <Section>
       <SectionTitle isCenter={false}>
         Magazine<SectionMiniTitle>With Dog</SectionMiniTitle>
       </SectionTitle>
-      <FlexRowContainer>
+      <HomeMagazineWrapper>
         {/* magazine data call and rendering */}
         {dogMagazines.map((m) => {
           return (
@@ -24,7 +33,7 @@ export const HomeMagazineDog = ({ dogMagazines }) => {
             </div>
           );
         })}
-      </FlexRowContainer>
+      </HomeMagazineWrapper>
       <SectionLink to="/magazine"> &gt; 매거진 더보기</SectionLink>
     </Section>
   );
@@ -36,7 +45,7 @@ export const HomeMagazineSpace = ({ spaceMagazines }) => {
       <SectionTitle isCenter={false}>
         Magazine<SectionMiniTitle>With Space</SectionMiniTitle>
       </SectionTitle>
-      <FlexRowContainer>
+      <HomeMagazineWrapper>
         {/* magazine data call and rendering */}
         {spaceMagazines.map((m) => {
           return (
@@ -45,7 +54,7 @@ export const HomeMagazineSpace = ({ spaceMagazines }) => {
             </div>
           );
         })}
-      </FlexRowContainer>
+      </HomeMagazineWrapper>
       <SectionLink to="/magazine"> &gt; 매거진 더보기</SectionLink>
     </Section>
   );

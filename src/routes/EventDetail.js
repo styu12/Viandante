@@ -1,9 +1,8 @@
-import PageTopBanner from "components/Page/PageTopBanner";
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
-import { CustomContainer } from "styles/Container-style";
+import { CustomContainer, PhotoBackground } from "styles/Container-style";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -18,16 +17,25 @@ const EventTextWrapper = styled.div`
   margin-bottom: 30px;
   margin-top: 85px;
   text-align: center;
+  @media (max-width: 768px) {
+    margin-top: 50px;
+  }
 `;
 
 const EventTitle = styled.h3`
-  font-size: 15px;
+  font-size: 27px;
   margin: 10px 0;
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
 `;
 
 const EventDesc = styled.p`
-  font-size: 11px;
+  font-size: 18px;
   color: gray;
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 const ImagesWrapper = styled.div`
@@ -36,12 +44,15 @@ const ImagesWrapper = styled.div`
   border-top: 1px solid black;
 `;
 
-const EventImage = styled.div`
-  width: 70%;
-  padding-bottom: 70%;
-  background: black;
+const EventImage = styled(PhotoBackground)`
+  width: 75%;
+  padding-bottom: 95%;
   margin: auto;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  @media (max-width: 768px) {
+    width: 90%;
+    padding-bottom: 120%;
+  }
 `;
 
 const BackBtn = styled.button`
@@ -56,26 +67,39 @@ const BackBtn = styled.button`
   align-items: center;
   margin: 20px auto;
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0);
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+  @media (max-width: 768px) {
+    font-size: 11px;
+    width: 80px;
+    height: 25px;
+  }
 `;
 
 const EventDetail = () => {
-  const [type, setType] = useState("ongoing");
-  const [BannerPhotos, setBannerPhotos] = useState({});
+  const { id } = useParams();
+  const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
-  const getEvents = async () => {
-    // main banner data call
-    await dbService.collection("MainBanner").onSnapshot((snapshot) => {
-      const mainBannerArray = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setBannerPhotos(mainBannerArray[0]);
-    });
+  const getEventImages = async () => {
+    await dbService
+      .collection("Events")
+      .get()
+      .then((res) => {
+        res.forEach((doc) => {
+          if (doc.id === id) {
+            setImages(doc.data().eventImages);
+            return;
+          }
+        });
+      });
   };
 
   useEffect(() => {
-    getEvents();
+    getEventImages();
   }, []);
 
   const toEventList = () => {
@@ -103,12 +127,9 @@ const EventDetail = () => {
         </EventTextWrapper>
 
         <ImagesWrapper>
-          <EventImage></EventImage>
-          <EventImage></EventImage>
-          <EventImage></EventImage>
-          <EventImage></EventImage>
-          <EventImage></EventImage>
-          <EventImage></EventImage>
+          {images.map((i) => (
+            <EventImage key={i} bg={i} />
+          ))}
         </ImagesWrapper>
 
         <BackBtn onClick={() => toEventList()}>목록</BackBtn>
