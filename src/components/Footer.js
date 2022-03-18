@@ -48,7 +48,7 @@ const Footer = () => {
       <FooterLogoLink to="/">
         <LogoIcon bg="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2FlogoText.png?alt=media&token=8a65e8a1-2043-4d36-b606-2a125cd73016" />
       </FooterLogoLink>
-      <ul>
+      {/* <ul>
         <li>
           <FooterText>
             상호 : 비안단테 &nbsp;&nbsp; 대표자 : 송승빈외 1명
@@ -57,7 +57,7 @@ const Footer = () => {
         <li>
           <FooterText>사업자 등록번호 : 575-28-01415</FooterText>
         </li>
-      </ul>
+      </ul> */}
     </FooterContainer>
   );
 };

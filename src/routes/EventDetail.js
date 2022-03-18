@@ -2,7 +2,7 @@ import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { CustomContainer, PhotoBackground } from "styles/Container-style";
 import styled from "styled-components";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLinkClickHandler, useNavigate, useParams } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -82,6 +82,8 @@ const BackBtn = styled.button`
 const EventDetail = () => {
   const { id } = useParams();
   const [images, setImages] = useState([]);
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
   const navigate = useNavigate();
 
   const getEventImages = async () => {
@@ -92,6 +94,8 @@ const EventDetail = () => {
         res.forEach((doc) => {
           if (doc.id === id) {
             setImages(doc.data().eventImages);
+            setTitle(doc.data().title);
+            setDesc(doc.data().desc);
             return;
           }
         });
@@ -122,8 +126,8 @@ const EventDetail = () => {
 
       <Container>
         <EventTextWrapper>
-          <EventTitle>비안단테 고성 캠핑장 얼리버드 회원권 모집</EventTitle>
-          <EventDesc>회원권 30구좌 선착순 한정. 5월 정식 오픈 예정</EventDesc>
+          <EventTitle>{title}</EventTitle>
+          <EventDesc>{desc}</EventDesc>
         </EventTextWrapper>
 
         <ImagesWrapper>
