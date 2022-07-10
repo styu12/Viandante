@@ -7,7 +7,7 @@ import {
   SectionTitle,
 } from "styles/Container-style";
 import TopBanner from "components/TopBanner";
-import HomeEvent from "components/Home/HomeEvent";
+// import HomeEvent from "components/Home/HomeEvent";
 import HomeReview from "components/Home/HomeReview";
 import { HomeDogBanner, HomeSpaceBanner } from "components/Home/HomeBanner";
 import {
@@ -16,7 +16,7 @@ import {
 } from "components/Home/HomeMagazine";
 import HomeStay from "components/Home/HomeStay";
 import styled from "styled-components";
-import EventPop from "components/EventPop";
+// import EventPop from "components/EventPop";
 
 const ReviewContainer = styled.div`
   margin: auto;
@@ -41,7 +41,7 @@ const Home = () => {
   const [spaceMagazines, setSpaceMagazines] = useState([]);
   const [reviews, setReviews] = useState([]);
   const [BannerPhotos, setBannerPhotos] = useState({});
-  const [isPop, setIsPop] = useState(true);
+  // const [isPop, setIsPop] = useState(true);
 
   // firestore data 모두 불러오기
   const getData = async () => {
@@ -120,7 +120,7 @@ const Home = () => {
   // 컴포넌트 렌더링 시 이미지 불러와서 state에 담기
   useEffect(() => {
     getData();
-    setIsPop(true);
+    // setIsPop(true);
   }, []);
 
   return (
