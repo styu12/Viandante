@@ -33,6 +33,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy to Firebase
-        run: firebase deploy
+        uses: mohammed-atif/firebase-publish-react@v1.0
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
