@@ -23,13 +23,8 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Build
         run: |
-          npm install
+          npm ci
           npm build
-      - name: Archive Build
-        uses: actions/upload-artifact@v2
-        with:
-          name: build
-          path: build
     
   deploy:
     name: Deploy
@@ -37,11 +32,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Download Build
-        uses: actions/download-artifact@v2
-        with:
-          name: build
-          path: build
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
