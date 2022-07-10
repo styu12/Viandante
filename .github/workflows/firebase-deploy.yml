@@ -23,7 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Build
         run: |
-          npm ci
+          npm install
           npm run build
     
   deploy:
@@ -33,6 +33,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy to Firebase
-        uses: mohammed-atif/firebase-publish-react@v1.0
-        with:
-          firebase-token: ${{ secrets.FIREBASE_TOKEN }}
+        run: |
+          npm install firebase-tools
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
