@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-
+    name: Build
     runs-on: ubuntu-latest
 
     strategy:
@@ -33,7 +33,7 @@ jobs:
     
   deploy:
     name: Deploy
-    needs: build
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
