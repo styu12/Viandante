@@ -2,7 +2,7 @@ import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { CustomContainer, PhotoBackground } from "styles/Container-style";
 import styled from "styled-components";
-import { useLinkClickHandler, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
