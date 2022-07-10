@@ -33,8 +33,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Deploy to Firebase
-        env:
-          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
         run: |
           npm install firebase-tools
-          firebase deploy --token $FIREBASE_TOKEN --non-interactive
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
