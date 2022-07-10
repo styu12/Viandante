@@ -72,7 +72,7 @@ const LogoIcon = styled(PhotoBackground)`
 const TopBanner = ({ bg }) => {
   const navigate = useNavigate();
   const toMainStay = () => {
-    navigate("/stay/detail/8tEEn7gJk6k2QyMl6UDS");
+    navigate("/stay/detail/8iDoe2PFErG6T7UyD6F5");
   };
 
   return (
@@ -81,12 +81,12 @@ const TopBanner = ({ bg }) => {
         <TopBannerTextBox>
           <LogoIcon bg="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Icons%2Flogo.png?alt=media&token=2df9861a-0e96-4593-9cc2-88920216a941" />
           <TopBannerText>
-            도심을 벗어난 안식처, <br />
+            한옥에서의 고즈넉한 하루, <br />
             반려견과 함께하는 여행
           </TopBannerText>
           <TopBannerText>
             Viandante <br />
-            원주점 바로가기 →<br />
+            춘천점 바로가기 →<br />
           </TopBannerText>
         </TopBannerTextBox>
       </TopBannerTextWrapper>

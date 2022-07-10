@@ -125,12 +125,12 @@ const Home = () => {
 
   return (
     <CustomContainer>
-      {isPop ? (
+      {/* {isPop ? (
         <EventPop
           setIsPop={setIsPop}
           imgUrl="https://firebasestorage.googleapis.com/v0/b/viandante-149df.appspot.com/o/Events%2F1%2Fthumb.jpg?alt=media&token=ce47bbe1-ed0a-4292-b577-056cf8a30ac8"
         />
-      ) : null}
+      ) : null} */}
 
       <TopBanner bg={BannerPhotos.topBannerUrl} />
 

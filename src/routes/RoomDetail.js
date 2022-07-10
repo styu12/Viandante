@@ -115,12 +115,12 @@ const RoomDetail = () => {
                 )
               )}
             </RoomAvailable>
-            <RoomBook href={room.calendarUrl} target="_blank" rel="noreferrer">
+            <RoomBook href={room.naverUrl} target="_blank" rel="noreferrer">
               [{room.name}] 예약하기
             </RoomBook>
           </Section>
 
-          <Calendar src={room.calendarUrl} />
+          {/* <Calendar src={room.calendarUrl} /> */}
 
           <FAQ rooms={[room]} faqRef={faqRef} />
         </>

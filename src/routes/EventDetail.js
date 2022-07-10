@@ -55,6 +55,25 @@ const EventImage = styled(PhotoBackground)`
   }
 `;
 
+const InstaBtn = styled.a`
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  padding: 10px 17px;
+  width: 200px;
+  border: 1px solid black;
+  border-radius: 10px;
+  cursor: pointer;
+  margin: 40px auto;
+  display: block;
+  &:hover {
+    background-color: black;
+    color: white;
+  }
+`;
+
 const BackBtn = styled.button`
   font-size: 15px;
   color: gray;
@@ -84,6 +103,7 @@ const EventDetail = () => {
   const [images, setImages] = useState([]);
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
+  const [isInsta, setIsInsta] = useState(false);
   const navigate = useNavigate();
 
   const getEventImages = async () => {
@@ -96,6 +116,7 @@ const EventDetail = () => {
             setImages(doc.data().eventImages);
             setTitle(doc.data().title);
             setDesc(doc.data().desc);
+            setIsInsta(doc.data().isInsta);
             return;
           }
         });
@@ -135,6 +156,15 @@ const EventDetail = () => {
             <EventImage key={i} bg={i} />
           ))}
         </ImagesWrapper>
+
+        {isInsta ? (
+          <InstaBtn
+            href="https://www.instagram.com/viandante_official/"
+            target="_blank"
+          >
+            이벤트 참여하러 가기 &rarr;
+          </InstaBtn>
+        ) : null}
 
         <BackBtn onClick={() => toEventList()}>목록</BackBtn>
       </Container>
