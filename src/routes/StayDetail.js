@@ -1,6 +1,6 @@
 import FAQ from "components/FAQ";
 import MagazineSpace from "components/MagazineSpace";
-import NaverMapLoadable from "components/Map";
+// import NaverMapLoadable from "components/Map";
 import Slider from "components/Slider";
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";

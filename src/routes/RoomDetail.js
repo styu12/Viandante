@@ -46,17 +46,17 @@ const RoomBook = styled.a`
   }
 `;
 
-const Calendar = styled.iframe`
-  width: 70%;
-  height: 1200px;
-  margin: 15px auto 100px auto;
-  display: block;
-  border: 2px solid black;
-  border-radius: 15px;
-  @media (max-width: 768px) {
-    width: 90%;
-  }
-`;
+// const Calendar = styled.iframe`
+//   width: 70%;
+//   height: 1200px;
+//   margin: 15px auto 100px auto;
+//   display: block;
+//   border: 2px solid black;
+//   border-radius: 15px;
+//   @media (max-width: 768px) {
+//     width: 90%;
+//   }
+// `;
 
 const RoomDetail = () => {
   const { id, roomId } = useParams();
