@@ -143,7 +143,7 @@ const Home = () => {
       {/* <HomeEvent /> */}
 
       <Section>
-        <SectionTitle isCenter={false}>Reviews</SectionTitle>
+        <SectionTitle isCenter={false}>Reviewsss</SectionTitle>
         <ReviewContainer>
           {reviews.map((r) => (
             <HomeReview key={r.id} r={r} stays={stays} />
