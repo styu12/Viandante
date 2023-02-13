@@ -115,7 +115,8 @@ const RoomDetail = () => {
                 )
               )}
             </RoomAvailable>
-            <RoomBook href={room.naverUrl} target="_blank" rel="noreferrer">
+            {/* <RoomBook href={room.naverUrl} target="_blank" rel="noreferrer"> */}
+            <RoomBook href='https://pension.onda.me/bp/132131/calendar' target="_blank" rel="noreferrer">
               [{room.name}] 예약하기
             </RoomBook>
           </Section>

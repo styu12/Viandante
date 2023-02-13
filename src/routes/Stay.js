@@ -93,7 +93,11 @@ const Stay = () => {
 
   return (
     <Container>
-      {stays.map((s) => (
+      {stays.map((s) => {
+        if(s.name === "비안단테 원주") {
+          return null
+        }
+      return (
         <StayPoster
           key={s.id}
           bg={s.thumbnailUrl}
@@ -104,7 +108,8 @@ const Stay = () => {
             <span>{s.description}</span>
           </StayPosterLink>
         </StayPoster>
-      ))}
+      )}
+      )}
     </Container>
   );
 };

@@ -301,21 +301,21 @@ const Header = () => {
         >
           <BookBtn>예약하기</BookBtn>
           <BookLink
-            href="https://map.naver.com/v5/search/%EB%B9%84%EC%95%88%EB%8B%A8%ED%85%8C/place/1200483633?c=14214578.1951329,4565663.5056626,15,0,0,0,dh&placePath=%3Fentry%253Dpll"
-            // href="https://rev.yapen.co.kr/external?ypIdx=62417"
+            href="https://pension.onda.me/bp/132131/calendar"
+            // href="https://map.naver.com/v5/search/%EB%B9%84%EC%95%88%EB%8B%A8%ED%85%8C%20%ED%8E%9C%EC%85%98%20%EC%B6%98%EC%B2%9C/place/1200483633?c=14214578.1927995,4565663.5056625,15,0,0,0,dh&isCorrectAnswer=true"
             target="_blank"
             active={bookShowing === true}
           >
             춘천점
           </BookLink>
-          <BookLink
+          {/* <BookLink
             href="https://map.naver.com/v5/search/%EB%B9%84%EC%95%88%EB%8B%A8%ED%85%8C/place/1310974917?c=14221027.9239780,4464344.0358447,15,0,0,0,dh&placePath=%3Fentry%253Dpll"
             // href="https://rev.yapen.co.kr/external?ypIdx=62408"
             target="_blank"
             active={bookShowing === true}
           >
             원주점
-          </BookLink>
+          </BookLink> */}
         </BookBtnContainer>
       </CustomNavigator>
     </Container>

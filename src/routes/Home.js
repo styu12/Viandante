@@ -136,7 +136,7 @@ const Home = () => {
 
       <HomeStay stays={stays} />
 
-      <HomeDogBanner bg={BannerPhotos.dogBannerUrl} />
+      {/* <HomeDogBanner bg={BannerPhotos.dogBannerUrl} /> */}
 
       <HomeMagazineDog dogMagazines={dogMagazines} />
 
@@ -145,9 +145,14 @@ const Home = () => {
       <Section>
         <SectionTitle isCenter={false}>Review</SectionTitle>
         <ReviewContainer>
-          {reviews.map((r) => (
+          {reviews.map((r) => {
+            if (r.stay === "wonju") {
+            return null;
+          }
+          return (
             <HomeReview key={r.id} r={r} stays={stays} />
-          ))}
+          )}
+          )}
           <SectionLink to="/review"> &gt; 리뷰 더보기</SectionLink>
         </ReviewContainer>
       </Section>

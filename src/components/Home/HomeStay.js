@@ -26,8 +26,8 @@ const StayPhotoBox = styled(BasicPhotoBox)`
   cursor: pointer;
   transition: transform 0.3s;
   /* box-shadow: 12px 12px 10px rgba(0, 0, 0, 0.3); */
-  width: 85%;
-  padding-bottom: 85%;
+  width: 40%;
+  padding-bottom: 40%;
   border-radius: 10px;
   margin: 15px auto 30px auto;
   &:hover {
@@ -64,6 +64,9 @@ const HomeStay = ({ stays }) => {
       <FlexRowContainer>
         {/* stays call and rendering */}
         {stays.map((s) => {
+          if(s.name === "비안단테 원주") {
+            return null
+          }
           return (
             <div key={s.id}>
               <StayPhotoBox
