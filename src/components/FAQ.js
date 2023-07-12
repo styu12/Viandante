@@ -6,6 +6,7 @@ import {
   FAQPrice,
   FAQRefund,
   FAQTime,
+  FAQUsage,
 } from "./FAQ/FAQContent";
 
 const FAQContainer = styled.div`
@@ -72,6 +73,7 @@ const FAQ = ({ rooms, faqRef }) => {
     dog: <FAQDog dog={dog} />,
     facility: <FAQFacility facility={facility} />,
     refund: <FAQRefund />,
+    usage:  <FAQUsage />
   };
 
   const getData = async () => {
@@ -138,6 +140,13 @@ const FAQ = ({ rooms, faqRef }) => {
               >
                 환불규정
               </FAQFilter>
+              <FAQFilter
+                active={type === "usage"}
+                onClick={() => handleType("usage")}
+              >
+                이용안내
+              </FAQFilter>
+
             </FAQFilterWrapper>
             <FAQContentWrapper>
               {/* react에서 enum사용하기!! type 이랑 enum 변수 연결 */}

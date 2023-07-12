@@ -133,7 +133,7 @@ export const FAQDog = ({ dog }) => {
         실내에서 반려동물이 배변 시 반드시 직접 치워주세요!
       </FAQContentDesc>
       <FAQContentDesc>
-        {dog.banBigDog && "대형견(12kg 이상)은 입장이 불가합니다."}
+        {dog.banBigDog && "대형견 입장  가능"}
       </FAQContentDesc>
       <FAQContentDesc>구비된 용품: {dog.dogGoods}</FAQContentDesc>
       <FAQContentDesc>
@@ -193,6 +193,27 @@ export const FAQFacility = ({ facility }) => {
           <br></br>
         </FAQContentDesc>
       ))}
+    </FAQContent>
+  );
+};
+
+export const FAQUsage = () => {
+  return (
+    <FAQContent>
+      <FAQContentTitle>이용안내</FAQContentTitle>
+      
+
+
+      <FAQContentDesc>
+        펜션이용에 관한 모든 상담 서비스는 <span>카카오톡</span>으로만 진행을 합니다.
+      </FAQContentDesc>
+      <FAQContentDesc>
+        예약문의, 인원 추가, 반려견 추가, 바비큐 추가, 부대시설 등등의 모든 상담은 <span>카카오톡으로 연결 후</span> 진행 부탁드립니다.
+        전화문의를 받지 않습니다.
+      </FAQContentDesc>
+      <FAQContentDesc>
+        <span>페이지 하단 카카오톡 이모티콘 Click !</span> 상담직원에게 문의하기 !
+      </FAQContentDesc>
     </FAQContent>
   );
 };
